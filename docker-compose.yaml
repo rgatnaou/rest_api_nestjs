@@ -5,9 +5,9 @@ services:
     ports:
       - 5434:5432
     environment:
-      POSTGES_USER: postgres
-      POSTGES_PASS: 123
-      POSTGES_DB: nest
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
     networks:
       - freecodecamp
 networks:

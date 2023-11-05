@@ -11,11 +11,31 @@ datasource db {
 }
 
 model User {
-  id Int @id @unique @default(autoincrement())
-  creatAt 
+  id       Int      @id @unique @default(autoincrement())
+  creatAt  DateTime @default(now())
+  updateAt DateTime @updatedAt
 
+  email String @unique
+  hash  String
+
+  firstname String?
+  lastName  String?
+  Bookmark  Bookmark[]
+
+  @@map("users")
 }
 
 model Bookmark {
+  id       Int      @id @unique @default(autoincrement())
+  creatAt  DateTime @default(now())
+  updateAt DateTime @updatedAt
 
+  title     String
+  descption String?
+  link      String?
+
+  userId Int
+  users  User @relation(fields: [userId], references: [id])
+
+  @@map("bookmarks")
 }
